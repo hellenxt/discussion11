@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/challenge1.css">
   <title>JS Challenge #1</title>
+  <script>
+    function challenge1(checkboxElem) {
+      const emailInput = document.getElementById('emailDiv');
+      if (checkboxElem.checked) {
+        emailInput.style.display = 'block';
+      } else {
+        emailInput.style.display = 'none'; // Hide email input field
+      }
+    }
+  </script>
 </head>
 <body>
     <main>
@@ -20,7 +30,7 @@
 
           <div id="emailDiv">
             <label>
-              Email Address: 
+              Email Address:
               <input type="text" name="email" id="email">
             </label>
           </div>
@@ -29,7 +39,8 @@
         </fieldset>
       </form>
   </main>
-  <script src="js/jsChallenges.js"></script>
+  <script src="js/jsCallenges.js">
+  </script>
 
 
   </body>

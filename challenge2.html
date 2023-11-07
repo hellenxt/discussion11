@@ -1,34 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>JS Challenge #2</title>
+  <meta charset="UTF-8">
+  <title>JS Challenge #2</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/jsChallenges.js" defer></script>
+  <script>
+    function toggleAddress() {
+      var billingAddress = document.getElementById("bill").value;
+      var homeAddress = document.getElementById("home");
+      var checkbox = document.getElementById("sameAddress");
+
+      if (checkbox.checked) {
+        homeAddress.value = billingAddress;
+        homeAddress.disabled = true;
+      } else {
+        homeAddress.value = "";
+        homeAddress.disabled = false;
+      }
+    }
+  </script>
 </head>
+
 <body>
-    <main>
+  <main>
     <h1>JavaScript Challenge #2</h1>
     <form action="challenge3.html">
       <fieldset>
         <legend>Billing Information</legend>
         <div>
-          <label for ="bill">Billing Address:</label><br>
-          <textarea name="billingAdd" id="bill"></textarea>
-          </label>
+          <label for="bill">Billing Address:</label><br>
+          <textarea name="billingAdd" id="bill" aria-describedby="billingDescription" aria-labelledby="billLabel"></textarea>
+          <p id="billingDescription">Enter your billing address in the text area.</p>
         </div>
 
         <div>
-          <label for ="home">Home Address:</label><br>
-          <input type="checkbox" name="useBilling" id="sameAddress"> Same as above
+          <label for="home">Home Address:</label><br>
+          <input type="checkbox" name="useBilling" id="sameAddress" aria-describedby="sameAddressDescription" aria-labelledby="sameAddressLabel" onchange="toggleAddress()">
+          <label for="sameAddress" id="sameAddressLabel">Same as above</label>
           <br>
-          <textarea name="homeAdd" id="home"></textarea>
+          <textarea name="homeAdd" id="home" aria-describedby="homeAddressDescription" aria-labelledby="homeLabel"></textarea>
+          <p id="sameAddressDescription">Check this box if your home address is the same as your billing address.</p>
+          <p id="homeAddressDescription">Enter your home address in the text area.</p>
         </div>
-        <input type = "submit" value = "Go To Challenge 3">
+        <input type="submit" value="Go To Challenge 3">
       </fieldset>
     </form>
-    <p class = "alert">
-    If you are using the starter code, there is an accessibility errors on this page.  Fix them!!</p>
-    </main>
-    <script src="js/jsChallenges.js"></script>
-  </body>
+    <p class="alert">If you are using the starter code, there is an accessibility error on this page. Fix them!!</p>
+  </main>
+</body>
+
 </html>
