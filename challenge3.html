@@ -6,35 +6,11 @@
   <title>JS Challenge #3</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/challenge3.css">
-  <script>
-    function challenge3() {
-      // Get the value of the selected radio button for class standing
-      let classStanding = document.querySelector('input[name="standing"]:checked').value;
-
-      // Get the value of the selected radio button for anticipated graduation date
-      let gradDate = document.querySelector('input[name="gradDate"]:checked').value;
-
-      // Create an object to store the values
-      let formData = {
-        "classStanding": classStanding,
-        "gradDate": gradDate
-      };
-
-      // Convert the object to a JSON string
-      let jsonData = JSON.stringify(formData);
-
-      // Store the JSON string in local storage
-      localStorage.setItem("formData", jsonData);
-
-      // Return false to prevent the form from submitting
-      return false;
-    }
-  </script>
 </head>
 
 <body>
   <h1>JavaScript Challenge #3</h1>
-  <form action="challenge4.html" id="ch3form" onsubmit="return challenge3()">
+  <form action="challenge4.html" id="ch3form" onsubmit="return validateForm()">
     <fieldset>
       <legend>Current class standing:</legend>
       <div>
@@ -82,9 +58,23 @@
     </fieldset>
     <input type="submit" value="Let us know">
   </form>
-  <p class="alert">If you are using the starter code there is an error with the HTML code for the second group of radio
-    buttons. Fix it by updating the HTML.</p>
+  <p class="alert" id="error-message"></p>
   <script src="js/jsChallenges.js"></script>
+  <script>
+    function validateForm() {
+      var standingSelected = document.querySelector('input[name="standing"]:checked');
+      var gradDateSelected = document.querySelector('input[name="gradDate"]:checked');
+      var errorMessage = document.getElementById('error-message');
+
+      if (!standingSelected || !gradDateSelected) {
+        errorMessage.textContent = "Both class standing and anticipated graduation date must be selected.";
+        return false;
+      } else {
+        errorMessage.textContent = "";
+        return true;
+      }
+    }
+  </script>
 </body>
 
 </html>
